@@ -7,9 +7,9 @@ function Nav() {
    <hr className='w-[80%] my-2' />
    <h1 className='w-[80%] text-xl font-semibold'>Category</h1>
    <ul className='w-[80%] mt-2 '>
-    <li className='text-sm flex items-center py-2 px-3 gap-3 mb-1'> <span className='h-[17px] w-[17px] bg-blue-300 rounded-full'></span>Item1</li>
-     <li className='text-sm  flex items-center py-2 px-3 gap-3 mb-1'> <span className='h-[17px] w-[17px] bg-green-300 rounded-full'></span>Item1</li>
-      <li className='text-sm  flex items-center py-2 px-3 gap-3 mb-1'> <span className='h-[17px] w-[17px] bg-red-300 rounded-full'></span>Item1</li>
+    <li className='text-sm flex items-center py-2 px-3 gap-3 mb-1'> <span className='h-[17px] w-[17px] bg-blue-300 rounded-full'></span>Men's Clothing</li>
+     <li className='text-sm  flex items-center py-2 px-3 gap-3 mb-1'> <span className='h-[17px] w-[17px] bg-green-300 rounded-full'></span>Women's Clothing</li>
+      <li className='text-sm  flex items-center py-2 px-3 gap-3 mb-1'> <span className='h-[17px] w-[17px] bg-red-300 rounded-full'></span>Jwelerey</li>
    </ul>
    </nav>
   )
