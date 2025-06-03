@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import {ProductContext} from '../utils/Context'
+import Loading from '../Components/Loading';
 
 const Details = () => {
  const {id} = useParams();
  const [products] = useContext(ProductContext);
  const {title,image,description,price,category} = products[id-1];
 
-  return (
+  return products ? (
     <div className="flex justify-center items-center max-w-4xl mx-auto mt-5 mb-5 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 p-5">
       <div className="w-1/2 h-[100%]">
         <img
@@ -42,7 +43,7 @@ const Details = () => {
         </div>
       </div>
     </div>
-  );
+  ):<Loading />
 };
 
 export default Details;
