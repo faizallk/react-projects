@@ -13,6 +13,7 @@ return `rgba(${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},$
 }
   return (
     <nav className="h-screen w-[15%] bg-white flex flex-col items-center pt-5 bg-zinc-100">
+      <a href="/" className="font-semibold text-xl border  px-4 py-1 rounded mb-4 text-red-400 hover:shadow duration-100  hover:text-red-500 hover:shadow-red-300">Home</a>
       <a
         className="border rounded border-blue-300 px-4  py-2 text-m font-semibold text-blue-400 hover:shadow duration-200 hover:text-blue-500 hover:shadow-blue-300"
         href="/hello"
