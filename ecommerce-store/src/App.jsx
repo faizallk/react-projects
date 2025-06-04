@@ -1,8 +1,9 @@
 import React from 'react'
 import Home from './pages/Home'
-import Details from './pages/Details'
+import Details from './pages/ProductDetails'
 import {Routes,Route} from 'react-router-dom'
 import Loading from './Components/Loading'
+import ProductSkeleton from './Components/ProductSkeleton'
 function App() {
   return (
     <div className='h-screen w-screen flex'>
@@ -10,6 +11,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/details/:id" element={<Details />} />
     </Routes>
+    
     </div>
    
   )
