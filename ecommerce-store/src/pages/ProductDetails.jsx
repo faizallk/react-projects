@@ -5,22 +5,21 @@ import Loading from '../Components/Loading';
 import ProductSkeleton from '../Components/ProductSkeleton';
 import axios from '../utils/Axios';
 
-const Details = () => {
+const ProductDetails = () => {
+ const [products,setProducts] = useContext(ProductContext)
  const {id} = useParams();
  const [product, setproduct] = useState(null);
 
 
-const getProduct = async ()=>{
-  try{
-    const {data} = await axios.get(`/products/${id}`);
-    setproduct(data);
-  }catch(error){
-    console.log(error)
-  }
-}
-useEffect(()=>{
-  getProduct();
-},[])
+
+
+ useEffect(()=>{
+ if(!product){
+      setproduct(products.filter((p)=> p.id== id)[0]);
+    }
+    
+ },[])
+
 
 
   return product ? (
@@ -41,12 +40,13 @@ useEffect(()=>{
             {product.description}
           </p>
         </div>
-
-        <div className="text-2xl font-semibold text-green-600 mb-4">${product.price}</div>
-
         <div className=" font-semibold text-zinc-400 mb-5">
           {product.category}
         </div>
+
+        <div className="text-2xl font-semibold text-green-600 mb-4">${product.price}</div>
+
+        
 
         <div className="flex gap-3">
           <button className="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-500 transition">
@@ -61,4 +61,4 @@ useEffect(()=>{
   ):(<ProductSkeleton />);
 };
 
-export default Details;
+export default ProductDetails;

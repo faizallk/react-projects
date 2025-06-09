@@ -1,6 +1,7 @@
 import { useState , useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
+import {nanoid} from 'nanoid'
 
 function Create() {
     const [products,setProducts] = useContext(ProductContext)
@@ -15,16 +16,20 @@ function Create() {
     e.preventDefault();
     if(Title.trim().length > 5 || Description.trim().length > 5 || Image.trim().length > 5 || Category.trim().length > 5 || Price > 100 ){
      const product = {
+      id: nanoid(),
         title:Title,
         image:Image,
         description:Description,
         price:Price,
         category:Category,
     };
+    
     setProducts([...products,product]);
+    localStorage.setItem("products",JSON.stringify([...products,product]))
+    console.log(products)
    navigate("/")
     } else{
-        alert('Fields must be greater than 5')
+        alert('Evevry fields must have 5 characters')
     }
    
     
@@ -78,7 +83,7 @@ function Create() {
       
 <textarea type="text"
           className="w-full px-5 py-3 rounded bg-zinc-100 outline-none mb-4"
-          placeholder="Enter product description"
+          placeholder="Product description"
           onChange={(e) => {
             setDescription(e.target.value);
           }}

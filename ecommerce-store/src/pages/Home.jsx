@@ -5,22 +5,17 @@ import { ProductContext } from "../utils/Context";
 import Loading from "../Components/Loading";
 import axios from "../utils/Axios";
 function Home() {
-  const [products] = useContext(ProductContext);
+  const [products,setProducts] = useContext(ProductContext);
   let {search} = useLocation();
  const category = decodeURIComponent(search.split("=")[1])
 const [filteredProduct, setfilteredProduct] = useState(null);
 
- const getProductCategory = async ()=>{
-  try {
-    const {data} = await axios.get(`/products/category/${category}`);
-   setfilteredProduct(data)
-  } catch (error) {
-    console.log(error)
-  }
- }
+
  useEffect(()=>{
   if(!filteredProduct) setfilteredProduct(products);
-  if(category != 'undefined') getProductCategory()
+  if(category != 'undefined') {
+    setfilteredProduct(products.filter((p)=> p.category == category))
+  }
  },[category,products])
   return products ? (
     <>
