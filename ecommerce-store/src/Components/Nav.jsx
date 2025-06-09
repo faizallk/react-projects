@@ -12,7 +12,7 @@ return `rgba(${(Math.random()*255).toFixed()},${(Math.random()*255).toFixed()},$
 }
 
   return (
-    <nav className="h-screen w-[15%] bg-white flex flex-col items-center pt-5 bg-zinc-100">
+    <nav className="h-screen w-[15%] flex flex-col items-center pt-5 bg-zinc-100">
       
     
       <Link
