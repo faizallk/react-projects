@@ -47,7 +47,7 @@ useEffect(()=>{
 
   return Product ? (
     <form onSubmit={onSubmitHandler} className="w-[70%] flex flex-col justify-center items-center  mx-auto mt-5 mb-5 rounded-2xl shadow-lg overflow-hidden border border-gray-200 py-20 px-15">
-      <h1 className="text-4xl font-bold mb-5 text-blue-400 m-auto">
+      <h1 className=" text-start text-3xl font-semibold mb-5 text-black m-auto">
         Update The Product
       </h1>
       <input

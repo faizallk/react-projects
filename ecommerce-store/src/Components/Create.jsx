@@ -37,7 +37,7 @@ function Create() {
   }
   return (
     <form onSubmit={onSubmitHandler} className="w-[70%] flex flex-col justify-center items-center  mx-auto mt-5 mb-5 rounded-2xl shadow-lg overflow-hidden border border-gray-200 py-20 px-15">
-      <h1 className="text-4xl font-bold mb-5 text-blue-400 m-auto">
+      <h1 className="text-3xl font-semibold mb-5 text-black m-auto">
         Add New Product
       </h1>
       <input
