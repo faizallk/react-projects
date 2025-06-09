@@ -2,6 +2,7 @@ import { useState , useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import {nanoid} from 'nanoid'
+import { toast } from "react-toastify";
 
 function Create() {
     const [products,setProducts] = useContext(ProductContext)
@@ -26,7 +27,7 @@ function Create() {
     
     setProducts([...products,product]);
     localStorage.setItem("products",JSON.stringify([...products,product]))
-    console.log(products)
+   toast.success("Product Created!")
    navigate("/")
     } else{
         alert('Evevry fields must have 5 characters')

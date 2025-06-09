@@ -6,6 +6,7 @@ import Loading from './Components/Loading'
 import ProductSkeleton from './Components/ProductSkeleton'
 import NotFound from './pages/NotFound'
 import Create from './Components/Create'
+import EditProduct from './Components/EditProduct'
 
 function App() {
   const {search,pathname} = useLocation();
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/details/:id" element={<Details />} />
       <Route path='/create' element={<Create />}></Route>
+      <Route path='/edit/:id' element={<EditProduct />}></Route>
       <Route path='*' element={<NotFound />}></Route>
     </Routes>
     

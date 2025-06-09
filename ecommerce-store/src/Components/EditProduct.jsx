@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ProductContext } from '../utils/Context';
 import NotFound from '../pages/NotFound';
+import { toast } from 'react-toastify';
 
 function EditProduct() {
 const {id} = useParams();
@@ -29,7 +30,7 @@ const onChangeHandler = (e)=>{
     copyData[pi] = {...products[pi],...Product};
     setProducts(copyData);
     localStorage.setItem("products",JSON.stringify(copyData))
-
+  toast.success("Product edited successfully")
    navigate(-1)
     } else{
         alert('Evevry fields must have 5 characters')

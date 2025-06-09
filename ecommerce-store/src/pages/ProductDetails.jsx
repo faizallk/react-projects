@@ -1,11 +1,13 @@
 import React, { useContext,useEffect,useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate,Link} from 'react-router-dom';
 import {ProductContext} from '../utils/Context'
 import Loading from '../Components/Loading';
 import ProductSkeleton from '../Components/ProductSkeleton';
 import axios from '../utils/Axios';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
+const navigate =  useNavigate()
  const [products,setProducts] = useContext(ProductContext)
  const {id} = useParams();
  const [product, setproduct] = useState(null);
@@ -19,7 +21,14 @@ const ProductDetails = () => {
     }
     
  },[])
-
+//Deleting the product
+ const productDeleteHandler = (id)=>{
+    const filteredProducts = products.filter((p)=> p.id !== id);
+    setProducts(filteredProducts)
+    localStorage.setItem("products",JSON.stringify(filteredProducts));
+    toast.success("Product deleted successfully!")
+    navigate('/')
+ }
 
 
   return product ? (
@@ -49,10 +58,10 @@ const ProductDetails = () => {
         
 
         <div className="flex gap-3">
-          <button className="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-500 transition">
+          <Link to={`/edit/${product.id}`} className="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-500 transition">
             Edit
-          </button>
-          <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+          </Link>
+          <button onClick={()=> productDeleteHandler(product.id)} className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
             Delete
           </button>
         </div>
