@@ -13,7 +13,7 @@ function Stripes() {
 
 
   return (
-    <div>
+    <div className='w-full flex '>
         {data.map((elem,index)=>(
             <Stripe elem={elem} key={index} />
         ))}
