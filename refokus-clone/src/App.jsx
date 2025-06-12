@@ -5,6 +5,7 @@ import Stripes from './Components/Stripes'
 import Products from './Components/Products'
 import Marquees from './Components/Marquees'
 import Cards from './Components/Cards'
+import Footer from './Components/Footer'
 function App() {
   return (
     <div className='w-screen h-screen bg-zinc-900 text-white font-["Sutoshi Variable"] overflow-x-hidden'>
@@ -14,6 +15,7 @@ function App() {
       <Products />
       <Marquees />
       <Cards />
+      <Footer />
     </div>
   )
 }
