@@ -9,7 +9,7 @@ function Cards() {
             startProject:false,
             button:false,
             para:true,
-            width:"30%",
+            width:"basis-1/3",
            
         },
          {
@@ -18,7 +18,7 @@ function Cards() {
             startProject:true,
             button:false,
             para:false,
-            width: "70%",
+            width: "basis-2/3",
         }
     ]
   return (
