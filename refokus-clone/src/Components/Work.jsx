@@ -10,9 +10,9 @@ function Work() {
          {url: "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/634ef0af108a465002975acd_Showcase%20Websites%20(1).png" , top: "60%", left: "55%", isActive: false},
     ];
   return (
-    <div className='relative max-w-screen-lg mx-auto text-center'>
+    <div className='relative max-w-screen-lg mx-auto text-center mb-10'>
         <div>
-            <h1 className='text-[30vw] tracking-tight leading-none font-medium'>work</h1>
+            <h1 className='text-[30vw] tracking-tight leading-none select-none font-medium'>work</h1>
         </div>
         <div className='absolute top-0 w-full h-full '>
            {images.map((elem,index)=>(
