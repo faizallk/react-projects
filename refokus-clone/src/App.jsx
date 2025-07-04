@@ -8,14 +8,14 @@ import Cards from './Components/Cards'
 import Footer from './Components/Footer'
 function App() {
   return (
-    <div className='w-screen h-screen bg-zinc-900 text-white font-["Sutoshi Variable"] overflow-x-hidden'>
-      <Navbar />
-      <Work />
-      <Stripes />
-      <Products />
-      <Marquees />
-      <Cards />
-      <Footer />
+    <div className='app w-screen h-screen bg-zinc-900 text-white font-["Sutoshi Variable"] overflow-x-hidden'>
+      <Navbar   />
+      <Work  />
+      <Stripes  />
+      <Products  />
+      <Marquees  />
+      <Cards  />
+      <Footer  />
     </div>
   )
 }
