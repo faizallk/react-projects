@@ -2,39 +2,64 @@ import axios from "../../utils/Axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const TopNav = () => {
-        const [query, setquery] = useState('');
-        const [searches, setsearches] = useState(null);
-    const getSearches = async ()=>{
-        try{
-            const data = await axios.get(`/?s=${query}`);
-          setsearches(data)
-          console.log(searches)
-        }catch(err){
-            console.log("Error :",err)
-        }
+  const [query, setquery] = useState("");
+  const [searches, setsearches] = useState(null);
+  const getSearches = async () => {
+    try {
+      if (query.trim().length > 0) {
+        const { data } = await axios.get(`/search/multi?query=${query}`);
+        setsearches(data.results);
+      }
+    } catch (err) {
+      console.log("Error :", err);
     }
-useEffect(()=>{
+  };
+  useEffect(() => {
     getSearches();
-},[query])
+  }, [query]);
+
   return (
-  <div className='w-full h-[10vh] text-zinc-400 flex justify-start items-center relative ml-[15vh]'>
-    <i class="text-2xl ri-search-line"></i>
-    <input onChange={(e)=>setquery(e.target.value)} value={query} className='text-lg  text-zinc-200 rounded-4xl border-none outline-none p-5 w-[50%]' type="text" placeholder='Search anything' />
-   {query.length > 0 &&  <i onClick={()=> setquery('')} class="text-2xl ri-close-large-line"></i>}
-   <div className="w-[55%] max-h-[60vh] bg-zinc-200 text-zinc-600 absolute top-[100%] overflow-auto">
-    {/* { searches.length > 0 &&
-        searches.map((elem,index)=>(
-            <Link key={index} className=" inline-block p-7 border-b-[2px] border-zinc-100 w-full bg-zinc-200  hover:text-black hover:bg-zinc-300 duration-200">
-    <img src="" alt="" />
-    <span className="font-semibold">Hello</span>
-    </Link>
-        ))
-    } */}
-    
+    <div className="w-full h-[10vh] text-zinc-400 flex justify-start items-center relative ml-[15vh]">
+      <div className="w-1/2 bg-zinc-800 mt-1 flex justify-start items-center px-5 rounded-[60px]">
+        <i className="text-xl ri-search-line"></i>
+        <input
+          onChange={(e) => setquery(e.target.value)}
+          value={query}
+          className="text-lg  text-zinc-200 rounded-4xl border-none outline-none p-3 w-full"
+          type="text"
+          placeholder="Search anything..."
+        />
+        {query.length > 0 && (
+          <i
+            onClick={() => setquery("")}
+            className="text-xl ri-close-large-line"
+          ></i>
+        )}
+      </div>
+      <div className="w-[55%] max-h-[60vh] text-zinc-100 absolute top-[120%] left-[3%] bg-zinc-900 overflow-auto">
+        {searches &&
+          searches.map((elem, index) => (
+            <Link
+              key={index}
+              className=" p-2 border-b-[2px] border-zinc-600 w-full bg-zinc-700   flex justify-start items-center  gap-3 hover:bg-zinc-600 duration-200 overflow-x-hidden"
+            >
+              <img
+                src={
+                  elem.poster_path
+                    ? `https://image.tmdb.org/t/p/w500/${
+                        elem.poster_path || elem.backdrop_path
+                      }`
+                    : "/no-image.png"
+                }
+                className="object-cover w-20 h-20 rounded"
+                alt=""
+              />
+              <span className="font-semibold ">{elem.name || elem.title}</span>
+            </Link>
+          ))}
+      </div>
+    </div>
+  );
+};
 
-   </div>
-  </div>
-  )
-}
-
-export default TopNav
+export default TopNav;
