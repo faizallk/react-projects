@@ -11,7 +11,6 @@ const Home = () => {
   const [wallpaper, setWallpaper] = useState(null);
   const [trending, setTrending] = useState([]);
   const [category, setCategory] = useState("all");
-  const [duration, setduration] = useState("day");
   const getWallpaper = async () => {
     try {
       const data = await axios.get("/trending/all/day");
@@ -25,7 +24,7 @@ const Home = () => {
 
   const getTrending = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}`);
+      const { data } = await axios.get(`/trending/${category}/day`);
       setTrending(data.results);
     } catch (error) {
       console.log(error);
@@ -34,7 +33,7 @@ const Home = () => {
   useEffect(() => {
     !wallpaper && getWallpaper();
     getTrending();
-  }, [wallpaper,category,trending,duration]);
+  }, [wallpaper,category]);
   return (
     wallpaper ? (
       <>
@@ -44,7 +43,7 @@ const Home = () => {
           <Header data={wallpaper} />
           <div className="flex items-center justify-between p-5">
          <h1 className='text-white text-2xl font-bold'>Trending <i className="text-red-500 ri-fire-fill"></i></h1>
-         <DropDown title="Filter" options={["all","tv","movie"]} setCategory={(e)=>setCategory(e.target.value)}/>
+         <DropDown title="Filter" options={["all","tv","movie"]} func={(e)=>setCategory(e.target.value)}/>
          </div>
           <HorizontalCards data={trending}  />
         </div>
