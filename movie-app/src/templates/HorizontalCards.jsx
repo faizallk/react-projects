@@ -4,8 +4,8 @@ import Card from './Card'
 
 function HorizontalCards({data}) {
   return (
-    <div className='w-[100%] h-[60vh] overflow-y-hidden p-5'>    
-       <div className='w-full h-[45vh] flex gap-4 overflow-x-auto mb-10 overflow-y-hidden'>
+    <div className='w-[100%] p-5 overflow-y-hidden overflow-x-scroll no-scrollbar'>
+       <div className='w-full  flex gap-4 '>
         {data.map((elem,index)=>(
             <Card key={index} data={elem} />
         ))}

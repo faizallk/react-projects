@@ -4,12 +4,14 @@ import TopNav from "../templates/TopNav";
 import axios from "../../utils/Axios";
 import Header from "../templates/Header";
 import HorizontalCards from "../templates/HorizontalCards";
+import Loading from "./Loading";
 import DropDown from "../templates/DropDown";
 const Home = () => {
   document.title = "FK | Homepage";
   const [wallpaper, setWallpaper] = useState(null);
   const [trending, setTrending] = useState([]);
   const [category, setCategory] = useState("all");
+  const [duration, setduration] = useState("day");
   const getWallpaper = async () => {
     try {
       const data = await axios.get("/trending/all/day");
@@ -23,7 +25,7 @@ const Home = () => {
 
   const getTrending = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/day`);
+      const { data } = await axios.get(`/trending/${category}/${duration}`);
       setTrending(data.results);
     } catch (error) {
       console.log(error);
@@ -32,9 +34,9 @@ const Home = () => {
   useEffect(() => {
     !wallpaper && getWallpaper();
     getTrending();
-  }, [wallpaper,category,trending]);
+  }, [wallpaper,category,trending,duration]);
   return (
-    wallpaper && (
+    wallpaper ? (
       <>
         <SideNav />
         <div className="w-[85%] h-full overflow-x-hidden ">
@@ -47,6 +49,8 @@ const Home = () => {
           <HorizontalCards data={trending}  />
         </div>
       </>
+    ) : (
+      <Loading />
     )
   );
 };

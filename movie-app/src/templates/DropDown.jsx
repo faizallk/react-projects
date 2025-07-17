@@ -1,9 +1,9 @@
 
 
-function DropDown({title,options,setCategory}) {
+function DropDown({title,options,func}) {
   return (
     <div className="select">
-    <select defaultValue="0" onChange={setCategory} name="format" id="format">
+    <select defaultValue="0" onChange={func} name="format" id="format">
       <option value="0" disabled>
        {title}
       </option>

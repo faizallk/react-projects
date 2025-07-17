@@ -2,11 +2,11 @@ import axios from "../../utils/Axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const TopNav = () => {
-  const [query, setquery] = useState("");
+  const [query, setquery] = useState('');
   const [searches, setsearches] = useState(null);
   const getSearches = async () => {
     try {
-      if (query.trim().length > 0) {
+      if (query.trim().length > 0 ) {
         const { data } = await axios.get(`/search/multi?query=${query}`);
         setsearches(data.results);
       }
@@ -20,7 +20,7 @@ const TopNav = () => {
 
   return (
     <div className="w-full h-[10vh] text-zinc-400 flex justify-start items-center relative ml-[15vh]">
-      <div className="w-1/2 bg-zinc-800 mt-1 flex justify-start items-center px-5 rounded-[60px]">
+      <div className="w-1/2 bg-zinc-900 mt-1 flex justify-start items-center px-5 rounded-[60px]">
         <i className="text-xl ri-search-line"></i>
         <input
           onChange={(e) => setquery(e.target.value)}
@@ -36,8 +36,8 @@ const TopNav = () => {
           ></i>
         )}
       </div>
-      <div className="w-[55%] max-h-[60vh] text-zinc-100 absolute top-[120%] left-[3%] bg-zinc-900 overflow-auto">
-        {searches &&
+      <div className="w-[50%] max-h-[60vh] text-zinc-100 absolute top-[100%]  bg-zinc-900 overflow-auto">
+        {searches?.length > 0 &&
           searches.map((elem, index) => (
             <Link
               key={index}
