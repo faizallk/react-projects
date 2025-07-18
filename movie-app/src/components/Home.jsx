@@ -35,7 +35,7 @@ const Home = () => {
     getTrending();
   }, [wallpaper,category]);
   return (
-    wallpaper ? (
+    wallpaper && trending.length > 0 ? (
       <>
         <SideNav />
         <div className="w-[85%] h-full overflow-x-hidden ">

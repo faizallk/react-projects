@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function VerticalCards({data}) {
   return (
-    <div className='w-full h-full flex flex-wrap gap-3  p-5'>
+    <div className='w-full h-full flex flex-wrap gap-3 bg-zinc-900 justify-center p-5'>
         {data.map((elem,index)=>(
             <Link  className='w-[19%] h-[50vh] rounded bg-zinc-800 overflow-hidden  shadow-md hover:shadow-zinc-800 duration-200' key={index}>
                 <img className='w-full h-[80%]  object-cover ' src={`https://image.tmdb.org/t/p/original/${elem.poster_path || elem.backdrop_path}`} alt="" />

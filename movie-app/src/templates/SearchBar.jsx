@@ -7,7 +7,7 @@ function SearchBar() {
     const [searches, setsearches] = useState(null);
     const getSearches = async () => {
       try {
-        if (query.trim().length > 0 && query !== '') {
+        if (query.trim().length > 0 ) {
           const { data } = await axios.get(`/search/multi?query=${query}`);
           setsearches(data.results);
         }
@@ -20,7 +20,7 @@ function SearchBar() {
     }, [query]);
   
   return (
-    <div className='relative w-[40%]'>
+    <div className='relative w-[50%]'>
     <div className=" bg-zinc-900  flex justify-start items-center px-5 rounded-[60px]">
     <i className="text-lg ri-search-line"></i>
     <input

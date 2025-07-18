@@ -10,7 +10,7 @@ function SideNav() {
     <nav className="mt-5 flex flex-col w-full">
         <h1 className="text-lg mb-2 font-bold text-zinc-300">New Feeds</h1>
     <Link to="/trending" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-1 ri-fire-fill"></i>Trending</Link>
-    <Link className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-bard-fill"></i>Popular</Link>
+    <Link to="/popular" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-bard-fill"></i>Popular</Link>
     <Link className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-movie-2-fill"></i>Movies</Link>
     <Link className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-tv-2-fill"></i>Tv Shows</Link>
     <Link className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-team-fill"></i>People</Link>
