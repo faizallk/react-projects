@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from '../../utils/Axios';
 import { Link } from 'react-router-dom';
+import noImage from '../assets/no-image.png'
 function SearchBar() {
     const [query, setquery] = useState('');
     const [searches, setsearches] = useState(null);
@@ -50,7 +51,7 @@ function SearchBar() {
                 ? `https://image.tmdb.org/t/p/w500/${
                     elem.poster_path || elem.backdrop_path
                   }`
-                : "/no-image.png"
+                : noImage
             }
             className="object-cover w-20 h-20 rounded"
             alt=""
