@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from '../../utils/Axios';
 import Loading from './Loading';
-import DropDown from '../templates/DropDown'
-import VerticalCards from '../templates/VerticalCards'
+import DropDown from './templates/DropDown'
+import VerticalCards from './templates/VerticalCards'
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../templates/SearchBar';
+import SearchBar from './templates/SearchBar';
 import InfiniteScroll from 'react-infinite-scroll-component';
 const Trending = () => {
    

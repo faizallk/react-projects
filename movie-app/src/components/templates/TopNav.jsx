@@ -1,4 +1,4 @@
-import axios from "../../utils/Axios";
+import axios from "../../../utils/Axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";

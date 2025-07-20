@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import SideNav from "../templates/SideNav";
-import TopNav from "../templates/TopNav";
+import SideNav from "./templates/SideNav";
+import TopNav from "./templates/TopNav";
 import axios from "../../utils/Axios";
-import Header from "../templates/Header";
-import HorizontalCards from "../templates/HorizontalCards";
+import Header from "./templates/Header";
+import HorizontalCards from "./templates/HorizontalCards";
 import Loading from "./Loading";
-import DropDown from "../templates/DropDown";
+import DropDown from "./templates/DropDown";
 const Home = () => {
   document.title = "FK | Homepage";
   const [wallpaper, setWallpaper] = useState(null);

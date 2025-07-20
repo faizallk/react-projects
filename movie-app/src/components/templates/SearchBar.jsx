@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import axios from '../../utils/Axios';
+import axios from '../../../utils/Axios';
 import { Link } from 'react-router-dom';
-import noImage from '../assets/no-image.png'
+import noImage from '../../assets/no-image.png'
 function SearchBar() {
     const [query, setquery] = useState('');
     const [searches, setsearches] = useState(null);

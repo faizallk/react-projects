@@ -18,8 +18,8 @@ function SideNav() {
     <hr className="mt-4 " />
        <nav className="mt-5 flex flex-col w-full">
         <h1 className="text-lg mb-2 font-bold text-zinc-300">Website Information</h1>
-    <Link className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-information-fill"></i>About</Link>
-    <Link className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-phone-fill"></i>Contact Us</Link>
+    <Link to={'/about'} className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-information-fill"></i>About</Link>
+    <Link to={'/contact'} className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-phone-fill"></i>Contact Us</Link>
    
     </nav>
    </div>

@@ -2,9 +2,9 @@
 import { useState,useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "./Loading";
-import VerticalCards from "../templates/VerticalCards";
-import DropDown from "../templates/DropDown";
-import SearchBar from "../templates/SearchBar";
+import VerticalCards from "./templates/VerticalCards";
+import DropDown from "./templates/DropDown";
+import SearchBar from "./templates/SearchBar";
 import { useNavigate } from "react-router-dom";
 import axios from "../../utils/Axios"
 

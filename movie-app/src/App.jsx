@@ -6,6 +6,8 @@ import Popular from './components/Popular'
 import Movie from './components/Movie'
 import Tv from './components/Tv'
 import People from './components/People'
+import About from './components/About'
+import Contact from './components/Contact'
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path='/movie' element={<Movie />}>Movie</Route>
         <Route path='/tv' element={<Tv />}>Tv</Route>
         <Route path='/people' element={<People />}>People</Route>
+        <Route path='/about' element={<About />}>About</Route>
+        <Route path='/contact' element={<Contact />}>Contact</Route>
 
 
 
