@@ -3,19 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const initailState = {
     info:null,
 }
-export const movieSlice = createSlice({
-    name:"movie",
+export const tvSlice = createSlice({
+    name:"tv",
     initialState:initailState,
     reducers:{
-        setMovieInfo:(state, action) => {
+        setTvInfo:(state, action) => {
             state.info = action.payload;
         },
-        clearMovieInfo:(state) => {
+        clearTvInfo:(state) => {
             state.info = null;
         }
     },
 });
 
-export const { setMovieInfo, clearMovieInfo } = movieSlice.actions;
+export const { setTvInfo, clearTvInfo } = tvSlice.actions;
 
-export default movieSlice.reducer;
+export default tvSlice.reducer;
