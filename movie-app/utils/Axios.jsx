@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const instance = axios.create({
 
-  baseURL: 'https://api.themoviedb.org/3/',
+  baseURL:import.meta.env.VITE_BASE_URL,
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYmU5MjMxNTU2ZDkzNDAyYjc0YTc5ODE4ZDIyZDdlZCIsIm5iZiI6MTc1MTgxMzQ1OC40NCwic3ViIjoiNjg2YThkNTIyYzRlZmFjYmMxNTNmOTZkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.DwPbru-Rx5Qdev4EzALFmH9yMipKSdKq66BgzWbnUmM'
+    Authorization:import.meta.env.VITE_API_KEY
   }
 });
 
