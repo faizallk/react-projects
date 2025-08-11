@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header({ data }) {
+function Header({ data, title}) {
+
   return (
-    <div
+    <Link to={`/${data.media_type || title}/${data.id}`}
       className="bg-red-200 w-[95%] mx-auto p-[3%] mt-3 h-[60vh] flex flex-col justify-end items-start overflow-hidden "
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${
@@ -40,10 +41,8 @@ function Header({ data }) {
         </p>
       </div>
 
-      <Link className="bg-[#6556cd] text-white px-4 py-2 rounded-md mt-3 hover:bg-[#5549a7] duration-300">
-        Watch Trailer
-      </Link>
-    </div>
+     
+    </Link>
   );
 }
 

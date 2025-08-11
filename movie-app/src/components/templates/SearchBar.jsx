@@ -17,12 +17,18 @@ function SearchBar() {
       }
     };
     useEffect(() => {
+      const delayDebounce = setTimeout(() => {
       getSearches();
+        getSearches();
+    }, 500); // 500ms debounce delay
+
+    // Cleanup function to cancel previous timer
+    return () => clearTimeout(delayDebounce);
     }, [query]);
   
   return (
     <div className='relative w-[50%]'>
-    <div className=" bg-zinc-900  flex justify-start items-center px-5 rounded-[60px]">
+    <div className=" bg-[#18181B]  flex justify-start items-center px-5 rounded-[60px]">
     <i className="text-lg ri-search-line"></i>
     <input
       onChange={(e) => setquery(e.target.value)}
@@ -38,10 +44,11 @@ function SearchBar() {
       ></i>
     )}
   </div>
-  <div className="w-[90%] max-h-[60vh] text-zinc-100 absolute top-[110%]  left-3 bg-zinc-900 overflow-auto">
-    {searches?.length > 0 &&
+  {searches?.length > 0 && query.trim().length > 0 &&
+ ( <div className="w-[90%] max-h-[60vh] text-zinc-100 absolute top-[110%]  left-3 bg-[#18181B] overflow-auto">
+    {
       searches.map((elem, index) => (
-        <Link
+        <Link to={`/${elem.media_type || elem.title}/${elem.id}`}
           key={index}
           className=" p-2 border-b-[2px] border-zinc-600 w-full bg-zinc-700   flex justify-start items-center  gap-3 hover:bg-zinc-600 duration-200 overflow-x-hidden"
         >
@@ -59,7 +66,7 @@ function SearchBar() {
           <span className="font-semibold ">{elem.name || elem.title}</span>
         </Link>
       ))}
-  </div>
+  </div>)}
   </div>
   )
 }

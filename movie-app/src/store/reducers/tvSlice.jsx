@@ -12,6 +12,7 @@ export const tvSlice = createSlice({
         },
         clearTvInfo:(state) => {
             state.info = null;
+            
         }
     },
 });

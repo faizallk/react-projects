@@ -13,7 +13,7 @@ function SideNav() {
     <Link to="/popular" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-bard-fill"></i>Popular</Link>
     <Link to="/movie" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-movie-2-fill"></i>Movies</Link>
     <Link to="/tv" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-tv-2-fill"></i>Tv Shows</Link>
-    <Link to="/people" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-team-fill"></i>People</Link>
+    <Link to="/person" className="px-4 py-3 rounded hover:bg-[#6556cd] duration-300 hover:text-white"><i className="mr-2 ri-team-fill"></i>People</Link>
     </nav>
     <hr className="mt-4 " />
        <nav className="mt-5 flex flex-col w-full">

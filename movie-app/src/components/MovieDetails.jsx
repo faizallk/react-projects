@@ -15,7 +15,6 @@ function MovieDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
- console.log(info)
   useEffect(() => {
     dispatch(getMovieDetails(id));
     return () => {
@@ -25,8 +24,9 @@ function MovieDetails() {
 
   return info ? (
     <div className="w-screen h-screen overflow-x-hidden">
+           
       {/* Part-1 Navigation */}
-      <nav className="w-full z-40 sticky top-0 h-[10vh] backdrop-blur-sm flex items-center justify-between bg-zinc-800 px-5">
+      <nav className="w-full bg-[#28272f] z-40 sticky top-0 h-[10vh]  flex items-center justify-between  px-5">
         <div className="flex items-center gap-3">
           <i
             onClick={() => navigate(-1)}
@@ -80,7 +80,7 @@ function MovieDetails() {
           </h1>
         </div>) : (
            <div className="w-full h-[25vw]  rounded relative overflow-hidden">
-          <ReactPlayer
+             {info.videos ? ( <ReactPlayer
             
             src={`https://www.youtube.com/watch?v=${info.videos.key}`}
             title="Trailer"
@@ -104,10 +104,12 @@ function MovieDetails() {
       },
     },
   }}
-          />
-           <h1 className=" absolute bottom-5 left-5 font-black text-zinc-300 text-5xl">
+          />) : <div className="w-full h-[25vw] flex justify-center items-center  rounded relative">
+            <h1 className="text-5xl font-bold text-center text-zinc-400"> Not Available</h1>
+            </div>}
+          {info.videos ? ( <h1 className=" absolute bottom-5 left-5 font-black text-zinc-300 text-5xl">
             {info.details?.title || info.details?.name}
-          </h1>
+          </h1>) : ''}
 
           {/* Close Button */}
           <button
@@ -120,14 +122,16 @@ function MovieDetails() {
         )}
         <div >
           <h1 className="text-zinc-400 text-md mt-2">
-            <span className=" text-lg text-zinc-300 font-medium">Genres :</span>{" "}
-            {info.details.genres.map((e) => e.name).join(", ")} |{" "}
+            <span className=" text-lg text-zinc-300 font-medium">Genres :</span>{' '}
+            {info.details.genres.map((e) => e.name).join(", ")} | {' '}
             {info.details.release_date}
           </h1>
-          <h1 className="text-zinc-400 text-md mt-1">
+        
+          {info.details.runtime !== 0 && (<h1 className="text-zinc-400 text-md mt-1">
             <span className=" text-lg text-zinc-300 font-medium">Duration :</span>{" "}
             {info.details.runtime} min
-          </h1>
+          </h1>)}
+     
            <h1 className="flex gap-2 items-center text-zinc-400 mt-1 "><span className="text-zinc-300 text-md font-medium text-lg">Ratings :</span> {Math.floor(info.details.vote_average)}/10 <i className="text-[#FE9A00] ri-star-fill"></i></h1>
            <h1 className="text-lg font-medium text-zinc-300 mt-1">Overview :</h1>
           <p className="w-[70%] text-zinc-400">{info.details.overview}</p>
@@ -144,20 +148,20 @@ function MovieDetails() {
         </div>
         <hr className="h-[1px] text-zinc-500 w-full my-5" />
         <h1 className="text-2xl font-bold  my-3">Casts :</h1>
- <div className="w-screen overflow-x-scroll  no-scrollbar">
+ <div className="w-full overflow-x-scroll  no-scrollbar">
   
-  <div className="flex gap-4  "> {/* flex added here */}
+  <div className="flex gap-3 "> {/* flex added here */}
     {info.credits.cast.map((c, i) => (
-      <Link
+      <Link to={`/person/${c.id}`}
         key={i}
-        className="w-[12%] max-w-[19%] overflow-hidden rounded-lg h-[18vw] flex-shrink-0 bg-[#1F1E24]"
+        className="w-[12%] max-w-[19%] overflow-hidden rounded-lg h-[18vw] bg-[#1f1e2488] flex-shrink-0"
       >
         <img
           src={c.profile_path ? `https://image.tmdb.org/t/p/original/${c.profile_path}` : noImage}
-          className="w-full rounded-lg h-[80%] object-cover hover:scale-105 duration-150"
+          className="w-full rounded-t-lg h-[80%] object-cover hover:scale-105 duration-150"
           alt={c.name}
         />
-        <h1 className="mt-1 text-center text-medium font-normal cursor-pointer hover:text-zinc-300 duration-100">{c.name}</h1>
+        <h1 className="my-2 text-center text-medium font-normal cursor-pointer hover:text-zinc-300 duration-100">{c.name.slice(0,10)}</h1>
       </Link>
 
     ))}
@@ -176,12 +180,13 @@ function MovieDetails() {
  {info.recommendations.length > 0 &&
   (<div className="flex gap-3 overflow-x-scroll no-scrollbar">
     {info.recommendations.map((s,i)=>(
-      <Card data={s} title={'movie'} />
+      <Card data={s} key={i} title={'movie'} />
     ))}
   </div>)
    }
    </div>
     </div>
+  
   ) : (
     <Loading />
   );

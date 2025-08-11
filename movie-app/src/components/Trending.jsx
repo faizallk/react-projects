@@ -46,7 +46,7 @@ const Trending = () => {
 
 
   return ( trending.length > 0 ?
-  <div className='w-screen h-screen bg-zinc-900'>
+  <div className='w-screen bg-zinc-900 '>
      <div className='bg-[#27272af6] w-full h-[13vh] fixed top-0 z-10 flex items-center  px-5'>
     <div className='flex items-center justify-start w-[20%] gap-3 '>
         <i onClick={()=> navigate(-1)} className="text-xl font-semibold  text-zinc-300 ri-arrow-left-line hover:text-[#6556cd] duration-100"></i>
@@ -63,7 +63,7 @@ const Trending = () => {
     </div>
     </div>
    </div>
-   <div className='w-full h-[87vh] bg-zinc-900 mt-[13vh]'>
+   <div className='w-full h-[87vh] bg-[#1F1E24] mt-[13vh]'>
     <InfiniteScroll
     dataLength={trending.length}
     next={getTrending}

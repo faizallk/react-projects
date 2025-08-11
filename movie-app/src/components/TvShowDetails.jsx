@@ -5,7 +5,8 @@ import Loading from './Loading'
 import { clearTvInfo, getTvDetails } from '../store/actions/tvActions';
 import Card from './templates/Card';
 import  ReactPlayer  from 'react-player';
-import noImage from '../assets/blank-person.webp'
+import noPersonImage from '../assets/blank-person.webp'
+import noImage from '../assets/no-image.png'
 function TvShowDetails() {
   document.title = "FK | Movie Details";
   const [showTrailer,SetShowTrailer] = useState(false);
@@ -13,7 +14,7 @@ function TvShowDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
- 
+ console.log(info)
   //Fetching the TvShow details
   useEffect(() => {
     dispatch(getTvDetails(id));
@@ -23,20 +24,10 @@ function TvShowDetails() {
   }, [id]);
 
   return info ? (
-     <div className="w-screen h-screen overflow-x-hidden" style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${
-              info.details.backdrop_path || info.details.poster_path
-            })`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundBlendMode: "overlay",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            // backgroundAttachment: "fixed", // removed to allow image to scroll with content
-          }}>
-            <div className='backdrop-blur-md mb-5'>
+     <div className="w-screen h-screen overflow-x-hidden">
+
       {/* Part-1 Navigation */}
-      <nav className="w-full z-40 sticky top-0 h-[10vh] backdrop-blur-lg flex items-center justify-between px-5">
+      <nav className="w-full z-40 sticky bg-[#28272f] top-0 h-[10vh] backdrop-blur-lg flex items-center justify-between px-5">
         <div className="flex items-center gap-3">
           <i
             onClick={() => navigate(-1)}
@@ -73,9 +64,9 @@ function TvShowDetails() {
       <div className="w-full h-full px-10 py-2 backdrop-blur-md">
        { !showTrailer ? ( <div
           style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${
+            backgroundImage: info.details.backdrop_path || info.details.poster_path ? `url(https://image.tmdb.org/t/p/original/${
               info.details.backdrop_path || info.details.poster_path
-            })`,
+            })` : noImage,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -90,7 +81,7 @@ function TvShowDetails() {
           </h1>
         </div>) : (
            <div className="w-full h-[25vw]  rounded relative overflow-hidden">
-          <ReactPlayer
+         {info.videos ? ( <ReactPlayer
             
             src={`https://www.youtube.com/watch?v=${info.videos.key}`}
             title="Trailer"
@@ -114,10 +105,12 @@ function TvShowDetails() {
       },
     },
   }}
-          />
-           <h1 className=" absolute bottom-5 left-5 font-black text-zinc-300 text-5xl">
+          />) : <div className="w-full h-[25vw] flex justify-center items-center bg-[#1f1e2488] rounded relative">
+            <h1 className="text-5xl font-bold text-center text-zinc-400"> Not Available</h1>
+            </div>}
+          {info.videos ? ( <h1 className=" absolute bottom-5 left-5 font-black text-zinc-300 text-5xl">
             {info.details?.title || info.details?.name}
-          </h1>
+          </h1>) : ''}
 
           {/* Close Button */}
           <button
@@ -165,7 +158,7 @@ function TvShowDetails() {
           </div>
         </div>
         <hr className="h-[1px] text-zinc-500 w-full my-5" />
-       
+ 
         <h1 className="text-2xl font-bold  my-3">Casts & Crews :</h1>
  <div className="w-full overflow-x-scroll no-scrollbar">
   
@@ -176,7 +169,7 @@ function TvShowDetails() {
         className="w-[12%] max-w-[19%] overflow-hidden rounded-lg h-[18vw] flex-shrink-0 bg-[#1f1e2488]"
       >
         <img
-          src={c.profile_path ? `https://image.tmdb.org/t/p/original/${c.profile_path}` : noImage}
+          src={c.profile_path ? `https://image.tmdb.org/t/p/original/${c.profile_path}` : noPersonImage}
           className="w-full rounded-t-lg h-[80%] object-cover hover:scale-105 duration-150"
           alt={c.name}
         />
@@ -187,7 +180,15 @@ function TvShowDetails() {
   </div>
 
 </div>
-
+      {info.details.seasons.length > 0 && ( <h1 className="font-bold text-2xl mt-3 mb-4">Seasons :</h1>
+ ) }
+ {info.details.seasons.length > 0 &&
+  (<div className="flex gap-3 overflow-x-scroll no-scrollbar">
+    {info.details.seasons.map((s,i)=>(
+      <Card data={s} key={i} title={'tv'} />
+    ))}
+  </div>)
+   }
   {/* <h1 className="font-bold text-3xl my-3">Similar Movies :</h1>
   <div className=" flex gap-3 overflow-x-scroll no-scrollbar">
     {info.similar.map((s,i)=>(
@@ -205,7 +206,7 @@ function TvShowDetails() {
    }
    </div>
     </div>
-    </div>
+    
   ): (<Loading />);
 }
 

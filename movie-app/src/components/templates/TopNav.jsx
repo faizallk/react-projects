@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 const TopNav = () => {
 
   return (
-    <div className="w-full h-[10vh] text-zinc-400 flex justify-start items-center relative ml-[15vh]">
+    <div className="w-full backdrop-blur-sm h-[10vh] text-zinc-400 flex justify-start items-center relative ml-[15vh]">
  <SearchBar />
     </div>
   );

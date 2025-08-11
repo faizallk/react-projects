@@ -60,14 +60,14 @@ useEffect(() => {
       </div>
       </div>
      </div>
-     <div className='w-full h-[87vh] bg-zinc-900 mt-[13vh]'>
+     <div className='w-full h-[87vh] bg-[#1F1E24] mt-[13vh]'>
       <InfiniteScroll
       dataLength={popular.length}
       next={getPopular}
       hasMore={hasMore}
       loader={<Loading />}
       >
-      <VerticalCards data={popular} />
+      <VerticalCards data={popular} title={category} />
       </InfiniteScroll>
      </div>
     </div>

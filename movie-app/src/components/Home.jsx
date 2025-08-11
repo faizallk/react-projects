@@ -19,6 +19,7 @@ const Home = () => {
       const randomData =
         data.data.results[Math.floor(Math.random() * data.data.results.length)];
       setWallpaper(randomData);
+    
     } catch (error) {
       console.log(error);
     }
@@ -53,20 +54,14 @@ const Home = () => {
     wallpaper && trending.length > 0 ? (
       <>
         <SideNav />
-        <div className="w-[85%] h-full overflow-x-hidden ">
+        <div className="w-[80%] h-full overflow-x-hidden  ">
           <TopNav />
-          <Header data={wallpaper} />
+          <Header data={wallpaper} title={category} />
           <div className="flex items-center justify-between p-5">
          <h1 className='text-white text-2xl font-bold'>Trending <i className="text-red-500 ri-fire-fill"></i></h1>
          <DropDown title="Filter" options={["all","tv","movie"]} func={(e)=>setCategory(e.target.value)}/>
          </div>
-          <HorizontalCards data={trending}  />
-          <div className="flex items-center justify-between px-5">
-         <h1 className='text-white text-2xl font-bold'>Popular <i className="text-amber-400 mr-2 ri-bard-fill"></i></h1>
-         <DropDown title="Filter" options={["tv","movie"]} func={(e)=>setPopCategory(e.target.value)}/>
-         </div>
-          <HorizontalCards data={popular}  />
-
+          <HorizontalCards data={trending} title={category} />
 
         </div>
       </>
