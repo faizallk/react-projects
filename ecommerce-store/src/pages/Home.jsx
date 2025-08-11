@@ -6,6 +6,7 @@ import Loading from "../Components/Loading";
 import axios from "../utils/Axios";
 function Home() {
   const [products,setProducts] = useContext(ProductContext);
+  console.log(products)
   let {search} = useLocation();
  const category = decodeURIComponent(search.split("=")[1])
 const [filteredProduct, setfilteredProduct] = useState(null);
