@@ -22,6 +22,8 @@ Browse trending movies and TV shows, view detailed information, watch trailers, 
 - **Secure API Key Handling** – Using `.env` file for TMDB API key.
 - **Client-Side Routing** – Using React Router.
 
+⚠️ **Note:** TMDB API may not serve data without VPN access in certain regions. If used without VPN, the app may get stuck on loading.
+
 ---
 
 ## 🛠️ Technologies Used
